@@ -12,7 +12,10 @@ describe('dawn theme layout', () => {
     expect(layout).toContain('<!doctype html>');
     expect(layout).toContain('<html');
     expect(layout).toContain('<slot');
-    expect(layout).toContain('tokens.css');
+    expect(layout).toContain('global.css');
+
+    const globalCss = readFileSync(path('src/styles/global.css'), 'utf-8');
+    expect(globalCss).toContain('tokens.css');
   });
 
   it('reserves a pages directory for the theme default pages (F1.2-F1.6)', () => {
