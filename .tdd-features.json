@@ -52,5 +52,14 @@
     "targetFiles": [],
     "recordedAt": "2026-09-12T10:41:24.416034+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "F1.7",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/acceptance/f1.7-nav-footer.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-12T10:44:04.598416+00:00",
+    "cyclesCompleted": 1
   }
 ]

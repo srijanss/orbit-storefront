@@ -1,5 +1,7 @@
 ---
 import './tokens.css';
+import Nav from '../../components/sections/Nav.astro';
+import Footer from '../../components/sections/Footer.astro';
 
 interface Props {
   title: string;
@@ -18,6 +20,8 @@ const { title, description } = Astro.props;
     <meta name="description" content={description} />
   </head>
   <body>
+    <Nav />
     <slot />
+    <Footer />
   </body>
 </html>
