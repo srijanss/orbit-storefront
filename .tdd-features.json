@@ -25,5 +25,14 @@
     "targetFiles": [],
     "recordedAt": "2026-09-12T10:32:41.129194+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "F1.4",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/acceptance/f1.4-contact-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-12T10:36:55.447734+00:00",
+    "cyclesCompleted": 1
   }
 ]

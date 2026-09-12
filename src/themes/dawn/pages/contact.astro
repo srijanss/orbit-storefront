@@ -1,0 +1,16 @@
+---
+import Layout from '../layout.astro';
+
+const contactEmail = 'hello@example.com';
+---
+
+<Layout title="Contact Us" description="Get in touch with us by email.">
+  <main>
+    <h1>Contact Us</h1>
+    <p>
+      Have a question? Email us at
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a> and we'll get back
+      to you.
+    </p>
+  </main>
+</Layout>
