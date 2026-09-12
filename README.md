@@ -1,43 +1,64 @@
-# Astro Starter Kit: Minimal
+# astro-storefront
+
+Astro storefront frontend for the Medusa-backed ecommerce project (see `SPEC.md` for the full plan, `AGENTS.md` for how this repo is operated). SSR via the Node adapter — not a static export.
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── sections/       # Shared across ALL themes — Hero, Nav, Footer, etc.
+│   │                    # Never fork a section per theme; style via tokens only.
+│   └── islands/         # Interactive components (cart, auth forms)
+├── themes/
+│   └── dawn/              # Default theme — design tokens + layout + default pages
+│       ├── tokens.css      # Tailwind v4 @theme tokens (colors, fonts, radii)
+│       ├── layout.astro
+│       └── pages/          # Landing, About, Contact, Privacy, Terms
+├── pages/            # File-based routing — wires routes to theme pages
+├── styles/
+│   └── global.css     # @import 'tailwindcss' + theme tokens
+public/
+├── theme-previews/     # Screenshot per theme, for the Medusa Admin theme picker
+tests/
+├── acceptance/         # Outside-in TDD acceptance tests (one per SPEC.md feature)
+├── unit/               # Drilled-down unit tests
+└── regression/         # Bug-fix regression tests
+astro.config.mjs
+vitest.config.ts        # Uses astro/config's getViteConfig so .astro files
+                        # render via Astro's Container API in tests
+```
+
+## Env Vars
+
+Copy `.env.example` to `.env` and fill in values — never commit `.env`.
+
+## Commands
 
 ```sh
-pnpm create astro@latest -- --template minimal
+pnpm install       # Install dependencies
+pnpm build         # Build production site to ./dist/
+pnpm preview       # Preview the build locally
+pnpm test          # Run the Vitest suite
+pnpm lint          # ESLint
+pnpm format        # Prettier
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Dev server
 
-## 🚀 Project Structure
+Run the dev server in the background so it doesn't block your terminal:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npx astro dev --background   # start — prints the local URL (default http://localhost:4321)
+npx astro dev status         # check if it's running
+npx astro dev logs           # tail server logs
+npx astro dev stop           # stop it
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Development workflow
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+This repo uses outside-in TDD (see `.agents/skills/tdd-start/` and the `outside-in-tdd` MCP server) — each feature starts with a failing acceptance test before any implementation. `pnpm test` must pass before a feature is considered done.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Want to learn more?
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+See [Astro's documentation](https://docs.astro.build).
