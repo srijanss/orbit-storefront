@@ -28,3 +28,6 @@ pnpm-debug.log*
 .tdd-research.json
 .tdd-state.json
 .tdd-session.log
+
+# project
+SPEC.md
