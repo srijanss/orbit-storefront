@@ -43,5 +43,14 @@
     "targetFiles": [],
     "recordedAt": "2026-09-12T10:39:06.578636+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "F1.6",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/acceptance/f1.6-terms-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-12T10:41:24.416034+00:00",
+    "cyclesCompleted": 1
   }
 ]
