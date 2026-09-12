@@ -7,5 +7,14 @@
     "targetFiles": [],
     "recordedAt": "2026-09-12T10:13:07.297940+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "F1.2",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/acceptance/f1.2-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-12T10:28:30.086444+00:00",
+    "cyclesCompleted": 1
   }
 ]
