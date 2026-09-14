@@ -16,4 +16,20 @@ describe('F1.2 Landing page', () => {
     expect(html).toMatch(/<meta[^>]+name="description"[^>]+content="[^"]+"/);
     expect(html).toContain('Lorem ipsum');
   });
+
+  it('renders the heritage storefront story with scroll-animated editorial sections', async () => {
+    const container = await AstroContainer.create();
+    const html = await container.renderToString(Page);
+
+    expect(html).toContain('Sukunda');
+    expect(html).toContain('More Than an Object');
+    expect(html).toContain('Light That Connects Us');
+    expect(html).toContain('A Flame of Blessings');
+    expect(html).toContain('Details That Endure');
+    expect(html).toContain('Treasures from Nepal');
+    expect(html).toContain('Preserve Our Heritage');
+    expect(html).toContain('Stories, New Arrivals &amp; More');
+    expect(html).toMatch(/data-scroll-reveal/);
+    expect(html).toMatch(/data-scroll-progress/);
+  });
 });

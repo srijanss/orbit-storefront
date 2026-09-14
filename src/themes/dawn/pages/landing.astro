@@ -1,19 +1,1481 @@
 ---
 import Layout from '../layout.astro';
+import kathmanduHeritage from '../assets/kathmandu-heritage.png';
+import sukundaDetail from '../assets/sukunda-detail.png';
+import sukundaHero from '../assets/sukunda-hero.png';
+import sukundaRitual from '../assets/sukunda-ritual.png';
+
+const products = [
+  {
+    name: 'Sukunda',
+    price: '$1,850.00',
+    image: sukundaHero.src,
+    position: '70% center',
+  },
+  {
+    name: 'Singing Bowl',
+    price: '$320.00',
+    image: sukundaDetail.src,
+    position: '24% center',
+  },
+  {
+    name: 'Thangka Painting',
+    price: '$1,200.00',
+    image: kathmanduHeritage.src,
+    position: 'center',
+  },
+  {
+    name: 'Pashmina Shawl',
+    price: '$450.00',
+    image: sukundaRitual.src,
+    position: '15% center',
+  },
+  {
+    name: 'Wooden Mask',
+    price: '$780.00',
+    image: sukundaDetail.src,
+    position: '76% center',
+  },
+];
 ---
 
-<Layout title="Home" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-  <main class="mx-auto max-w-5xl px-4 py-16 text-center md:px-6 md:py-24 lg:px-8">
-    <h1 class="text-5xl leading-tight font-bold text-text">Lorem ipsum dolor sit amet</h1>
-    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-    <a
-      href="/contact"
-      class="mt-8 inline-block rounded-md bg-action px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-action-hover"
+<Layout
+  title="Sukunda — A Living Heritage"
+  description="Lorem ipsum — discover Nepalese craft and living heritage."
+>
+  <main class="heritage-landing" data-heritage-landing>
+    <section class="hero" aria-labelledby="hero-title" data-scroll-reveal>
+      <img
+        class="hero__media"
+        src={sukundaHero.src}
+        alt="An ornate bronze Sukunda ceremonial lamp glowing in morning light"
+        width="2048"
+        height="1024"
+        fetchpriority="high"
+        data-hero-media
+      />
+      <div class="hero__veil"></div>
+      <div class="wrap hero__inner">
+        <div class="hero__copy" data-reveal-copy>
+          <p class="eyebrow">Timeless traditions</p>
+          <h1
+            id="hero-title"
+            class="text-5xl leading-tight font-bold text-text"
+          >
+            Sukunda
+          </h1>
+          <p class="hero__subhead">
+            More Than an Object
+            <br />A Living Heritage
+          </p>
+          <p class="hero__description">
+            A sacred lamp from Nepal’s rich cultural tradition, handcrafted by
+            skilled artisans, bringing light, blessings and history to your
+            home.
+          </p>
+          <div class="hero__actions">
+            <a href="/contact" class="button bg-action text-white">
+              Explore the Collection <span aria-hidden="true">→</span>
+            </a>
+            <a href="#ritual" class="text-link">
+              <span class="play" aria-hidden="true">
+                ▶
+              </span>{' '}
+              Watch the Story
+            </a>
+          </div>
+        </div>
+        <div class="hero__origin">
+          <strong>Sukunda</strong>
+          <span>
+            Nepal
+            <br />
+            19th Century (Est.)
+          </span>
+        </div>
+        <a class="scroll-cue" href="#discover">
+          <span class="scroll-cue__line">
+            <i data-scroll-progress></i>
+          </span>
+          Scroll to explore
+        </a>
+      </div>
+    </section>
+
+    <aside class="hero__steps" aria-label="Story chapters" data-scroll-timeline>
+      <span class="hero__steps-rail" aria-hidden="true">
+        <i class="hero__steps-progress" data-timeline-progress></i>
+      </span>
+      <ol>
+        <li
+          class="is-active"
+          data-timeline-step
+          data-timeline-target="discover"
+        >
+          <a href="#discover">
+            <span>01</span> Discover
+          </a>
+        </li>
+        <li data-timeline-step data-timeline-target="ritual">
+          <a href="#ritual">
+            <span>02</span> The Ritual
+          </a>
+        </li>
+        <li data-timeline-step data-timeline-target="craftsmanship">
+          <a href="#craftsmanship">
+            <span>03</span> Craftsmanship
+          </a>
+        </li>
+        <li data-timeline-step data-timeline-target="collection">
+          <a href="#collection">
+            <span>04</span> Our Collection
+          </a>
+        </li>
+      </ol>
+    </aside>
+
+    <section
+      id="discover"
+      class="section discover"
+      aria-labelledby="discover-title"
+      data-scroll-reveal
     >
-      Get in Touch
-    </a>
+      <div class="wrap discover__grid">
+        <div class="section-copy">
+          <p class="chapter">
+            <b>01</b> Discover
+          </p>
+          <h2 id="discover-title">Light That Connects Us</h2>
+          <p>
+            In Nepali culture, the Sukunda is more than a lamp. It represents
+            purity, protection and the presence of the divine. A piece that
+            carries faith, art and history through generations.
+          </p>
+          <dl class="stats">
+            <div>
+              <dt>500+</dt>
+              <dd>Unique Pieces</dd>
+            </div>
+            <div>
+              <dt>30+</dt>
+              <dd>Artisan Families</dd>
+            </div>
+            <div>
+              <dt>100%</dt>
+              <dd>Authenticity Guaranteed</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="discover__gallery" data-parallax-group>
+          <img
+            class="gallery__detail"
+            src={sukundaDetail.src}
+            alt="Hand-carved Ganesh detail"
+            width="768"
+            height="768"
+            loading="lazy"
+          />
+          <img
+            class="gallery__temple"
+            src={kathmanduHeritage.src}
+            alt="Traditional Nepalese temple roofs"
+            width="768"
+            height="980"
+            loading="lazy"
+          />
+          <img
+            class="gallery__flame"
+            src={sukundaRitual.src}
+            alt="A Sukunda flame during a ritual"
+            width="768"
+            height="450"
+            loading="lazy"
+          />
+          <div class="story-card">
+            <h3>
+              Tradition
+              <br />
+              for modern
+              <br />
+              living.
+            </h3>
+            <p>Bring a piece of Nepal’s cultural heritage into your home.</p>
+            <a href="/about">
+              Our Story <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="ritual"
+      class="ritual"
+      aria-labelledby="ritual-title"
+      data-scroll-reveal
+    >
+      <img
+        src={sukundaRitual.src}
+        alt="A ceremonial Sukunda being lit"
+        width="2048"
+        height="1024"
+        loading="lazy"
+        data-parallax-media
+      />
+      <div class="ritual__shade"></div>
+      <div class="wrap ritual__inner">
+        <div class="ritual__copy">
+          <p class="chapter chapter--light">
+            <b>02</b> The Ritual
+          </p>
+          <h2 id="ritual-title">A Flame of Blessings</h2>
+          <p>
+            Traditionally lit during prayers and festivals, the Sukunda
+            symbolises the light that dispels darkness and brings prosperity,
+            peace and wisdom.
+          </p>
+          <a class="ritual__watch" href="#craftsmanship">
+            <span class="play play--light" aria-hidden="true">
+              ▶
+            </span>{' '}
+            Watch the Ritual
+          </a>
+        </div>
+        <blockquote>
+          “A single flame can carry a thousand years of faith.”
+        </blockquote>
+      </div>
+    </section>
+
+    <section
+      id="craftsmanship"
+      class="section craft"
+      aria-labelledby="craft-title"
+      data-scroll-reveal
+    >
+      <div class="wrap craft__grid">
+        <div class="section-copy craft__copy">
+          <p class="chapter">
+            <b>03</b> Craftsmanship
+          </p>
+          <h2 id="craft-title">Details That Endure</h2>
+          <p>
+            Every curve, carving and figure is meticulously crafted by hand
+            using traditional techniques passed down through generations.
+          </p>
+          <ul class="craft__values" aria-label="Craft qualities">
+            <li>
+              <span aria-hidden="true">✋</span>Handcrafted
+            </li>
+            <li>
+              <span aria-hidden="true">⌘</span>Authentic
+              <br />
+              Materials
+            </li>
+            <li>
+              <span aria-hidden="true">♢</span>Built to Last
+            </li>
+          </ul>
+        </div>
+        <figure class="craft__media">
+          <img
+            src={sukundaDetail.src}
+            alt="Close view of hand-tooled Sukunda metalwork"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            data-parallax-media
+          />
+          <a href="#featured">
+            Explore
+            <br />
+            the Details <span aria-hidden="true">→</span>
+          </a>
+        </figure>
+      </div>
+    </section>
+
+    <section
+      id="featured"
+      class="section featured"
+      aria-labelledby="featured-title"
+      data-scroll-reveal
+    >
+      <div class="wrap featured__grid">
+        <div class="featured__thumbs" aria-label="Product views">
+          <button
+            class="is-selected"
+            type="button"
+            aria-label="Show full Sukunda view"
+          >
+            <img
+              src={sukundaHero.src}
+              alt=""
+              width="96"
+              height="96"
+              loading="lazy"
+            />
+          </button>
+          <button type="button" aria-label="Show carved detail">
+            <img
+              src={sukundaDetail.src}
+              alt=""
+              width="96"
+              height="96"
+              loading="lazy"
+            />
+          </button>
+          <button type="button" aria-label="Show ritual view">
+            <img
+              src={sukundaRitual.src}
+              alt=""
+              width="96"
+              height="96"
+              loading="lazy"
+            />
+          </button>
+          <button type="button" aria-label="Show alternate detail">
+            <img
+              src={sukundaDetail.src}
+              alt=""
+              width="96"
+              height="96"
+              loading="lazy"
+            />
+          </button>
+        </div>
+        <div class="featured__media">
+          <img
+            src={sukundaHero.src}
+            alt="Featured bronze Sukunda"
+            width="1024"
+            height="1024"
+            loading="lazy"
+          />
+        </div>
+        <div class="featured__copy">
+          <p class="eyebrow">Featured piece</p>
+          <h2 id="featured-title">Sukunda</h2>
+          <p>
+            A beautifully preserved traditional Nepali Sukunda with intricate
+            carvings and divine detailing. Perfect for prayer rooms, cultural
+            spaces or as a collector’s item.
+          </p>
+          <div class="price">
+            <strong>$1,850.00</strong>
+            <span>20%</span>
+            <del>$2,300.00</del>
+          </div>
+          <div class="purchase-row">
+            <div class="quantity" aria-label="Quantity selector">
+              <button type="button" aria-label="Decrease quantity">
+                −
+              </button>
+              <span>1</span>
+              <button type="button" aria-label="Increase quantity">
+                +
+              </button>
+            </div>
+            <button class="button add-button" type="button">
+              <span aria-hidden="true">◇</span> Add to cart
+            </button>
+          </div>
+          <ul class="assurances">
+            <li>
+              <span>♢</span>Authenticity
+              <br />
+              Guaranteed
+            </li>
+            <li>
+              <span>♧</span>Worldwide
+              <br />
+              Shipping
+            </li>
+            <li>
+              <span>♢</span>Expertly
+              <br />
+              Curated
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="collection"
+      class="section collection"
+      aria-labelledby="collection-title"
+      data-scroll-reveal
+    >
+      <div class="wrap">
+        <div class="collection__head">
+          <div>
+            <p class="chapter">
+              <b>04</b> Our Collection
+            </p>
+            <h2 id="collection-title">Treasures from Nepal</h2>
+          </div>
+          <a href="#featured">
+            View All <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="product-grid" data-product-grid>
+          {products.map((product) => (
+            <article class="product-card" data-product-card>
+              <a href="#featured" aria-label={`View ${product.name}`}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  style={`object-position: ${product.position}`}
+                />
+              </a>
+              <h3>{product.name}</h3>
+              <p>{product.price}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section heritage"
+      aria-labelledby="heritage-title"
+      data-scroll-reveal
+    >
+      <div class="wrap heritage__grid">
+        <div class="section-copy heritage__copy">
+          <p class="chapter">
+            <b>05</b> A More Meaningful Tomorrow
+          </p>
+          <h2 id="heritage-title">Preserve Our Heritage</h2>
+          <p>
+            By choosing handmade pieces, you help sustain traditional skills,
+            support local artisans, and keep Nepal’s cultural heritage alive for
+            future generations.
+          </p>
+          <a class="button" href="/about">
+            Our Commitment <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <img
+          class="heritage__media"
+          src={kathmanduHeritage.src}
+          alt="Kathmandu Valley temples with the Himalayas beyond"
+          width="1024"
+          height="1024"
+          loading="lazy"
+          data-parallax-media
+        />
+        <ul class="heritage__pillars">
+          <li>
+            <span>♧</span>Support
+            <br />
+            Local Communities
+          </li>
+          <li>
+            <span>♢</span>Preserve
+            <br />
+            Cultural Heritage
+          </li>
+          <li>
+            <span>♢</span>Reduce
+            <br />
+            Environmental Impact
+          </li>
+        </ul>
+      </div>
+      <div class="newsletter">
+        <div class="wrap newsletter__inner">
+          <div>
+            <p class="eyebrow">Stay in the loop</p>
+            <h3 set:html={'Stories, New Arrivals &amp; More'} />
+            <p>
+              Join our newsletter and be the first to discover new treasures.
+            </p>
+          </div>
+          <form aria-label="Newsletter signup">
+            <label class="sr-only" for="heritage-email">
+              Email address
+            </label>
+            <input
+              id="heritage-email"
+              name="email"
+              type="email"
+              placeholder="Your email address"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
+
+<script>
+  import { initScrollMotion } from '../../../lib/landing-motion';
+
+  const cleanupScrollMotion = initScrollMotion();
+  document.addEventListener('astro:before-swap', cleanupScrollMotion, {
+    once: true,
+  });
+</script>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+  :global(body) {
+    background: #fbfaf7;
+    color: #13212c;
+  }
+  .heritage-landing {
+    overflow: clip;
+    background: #fbfaf7;
+  }
+  .wrap {
+    width: min(100% - 2rem, 1180px);
+    margin-inline: auto;
+  }
+  .section {
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+  }
+  .eyebrow,
+  .chapter {
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.17em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #75808a;
+  }
+  .chapter b {
+    color: #ff6a13;
+    margin-right: 0.75rem;
+  }
+  .section-copy h2,
+  .collection h2 {
+    margin: 0;
+    font-size: clamp(2.35rem, 5vw, 4.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+  .section-copy > p:not(.chapter) {
+    max-width: 32rem;
+    margin: 1.6rem 0 0;
+    color: #5e6870;
+    line-height: 1.72;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    min-height: 3.5rem;
+    padding: 0.85rem 1.5rem;
+    border: 0;
+    border-radius: 0.3rem;
+    background: #ff6a13;
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgb(255 106 19 / 18%);
+  }
+  .button:hover {
+    background: #e75400;
+  }
+  .button span {
+    font-size: 1.15rem;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hero {
+    position: relative;
+    min-height: min(760px, calc(100svh - 72px));
+    isolation: isolate;
+    display: grid;
+    align-items: stretch;
+    background: #eee5da;
+  }
+  .hero__media,
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero__veil {
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgb(249 247 242 / 96%) 0%,
+      rgb(249 247 242 / 75%) 38%,
+      transparent 66%
+    );
+  }
+  .hero__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: inherit;
+    padding-block: 5rem;
+  }
+  .hero__copy {
+    width: min(38rem, 54%);
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(4rem, 8vw, 7.4rem);
+    letter-spacing: -0.065em;
+  }
+  .hero__subhead {
+    margin: 0.3rem 0 1.2rem;
+    font-size: clamp(1.55rem, 3vw, 2.4rem);
+    line-height: 1.05;
+    color: #69747d;
+    font-weight: 700;
+  }
+  .hero__description {
+    max-width: 31rem;
+    margin: 0;
+    color: #59636a;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .text-link,
+  .ritual__watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #17242e;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .play {
+    display: grid;
+    width: 2.7rem;
+    height: 2.7rem;
+    place-items: center;
+    border: 2px solid #31414c;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    padding-left: 0.15rem;
+  }
+  .hero__steps {
+    position: fixed;
+    z-index: 30;
+    left: calc(50% + 590px + 1rem);
+    top: 24%;
+    padding: 0.75rem 0.75rem 0.25rem;
+    border-radius: 0.4rem;
+    background: rgb(251 250 247 / 76%);
+    box-shadow: 0 8px 28px rgb(30 27 21 / 6%);
+    backdrop-filter: blur(10px);
+  }
+  .hero__steps ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.5rem;
+  }
+  .hero__steps-rail {
+    position: absolute;
+    left: 0.75rem;
+    top: 1.1rem;
+    width: 1px;
+    height: calc(100% - 3.7rem);
+    overflow: hidden;
+    background: rgb(70 80 86 / 30%);
+  }
+  .hero__steps-progress {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    background: #ff6a13;
+  }
+  .hero__steps li {
+    position: relative;
+    padding: 0 0 2.2rem 0.2rem;
+    color: #69747d;
+    font-size: 0.78rem;
+    transition: color 0.25s ease;
+  }
+  .hero__steps li:last-child {
+    padding-bottom: 1rem;
+  }
+  .hero__steps a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .hero__steps li::before {
+    content: '';
+    position: absolute;
+    left: -1.72rem;
+    top: 0.35rem;
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 50%;
+    background: #89929a;
+  }
+  .hero__steps li.is-active {
+    color: #22313b;
+    font-weight: 700;
+  }
+  .hero__steps li.is-active::before {
+    left: -1.85rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    background: #ff6a13;
+    box-shadow: 0 0 0 3px rgb(255 106 19 / 15%);
+    transition:
+      width 0.25s ease,
+      height 0.25s ease,
+      left 0.25s ease,
+      background 0.25s ease;
+  }
+  .hero__steps span {
+    display: block;
+    margin-bottom: 0.15rem;
+    color: #8f969b;
+  }
+  .hero__steps .is-active span {
+    color: #ff6a13;
+  }
+  .hero__origin {
+    position: absolute;
+    right: 6%;
+    bottom: 6%;
+    display: grid;
+    font-size: 0.72rem;
+    color: #626d75;
+  }
+  .hero__origin strong {
+    color: #15232d;
+  }
+  .scroll-cue {
+    position: absolute;
+    bottom: 6%;
+    left: 0;
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+    color: #7b858d;
+    font-size: 0.7rem;
+    text-decoration: none;
+  }
+  .scroll-cue__line {
+    position: relative;
+    display: block;
+    width: 1px;
+    height: 4.5rem;
+    background: #aeb4b8;
+  }
+  .scroll-cue__line i {
+    position: absolute;
+    left: -0.25rem;
+    bottom: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #ff6a13;
+  }
+
+  .discover__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.35fr;
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: center;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin: 2.75rem 0 0;
+  }
+  .stats div {
+    display: grid;
+  }
+  .stats dt {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .stats dd {
+    margin: 0.15rem 0 0;
+    color: #737d84;
+    font-size: 0.68rem;
+  }
+  .discover__gallery {
+    position: relative;
+    min-height: 510px;
+  }
+  .discover__gallery img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 0.45rem;
+    box-shadow: 0 18px 50px rgb(25 32 36 / 12%);
+  }
+  .gallery__detail {
+    left: 0;
+    top: 0;
+    width: 42%;
+    height: 67%;
+  }
+  .gallery__temple {
+    left: 45%;
+    top: 8%;
+    width: 29%;
+    height: 67%;
+  }
+  .gallery__flame {
+    left: 29%;
+    bottom: 0;
+    width: 48%;
+    height: 34%;
+  }
+  .story-card {
+    position: absolute;
+    right: 0;
+    top: 4%;
+    width: 27%;
+    min-height: 63%;
+    padding: 2rem 1.35rem;
+    background: rgb(255 255 255 / 94%);
+    border-radius: 0.5rem;
+    box-shadow: 0 16px 45px rgb(41 34 25 / 8%);
+  }
+  .story-card::before {
+    content: '';
+    display: block;
+    width: 2.2rem;
+    height: 0.18rem;
+    margin: 4.5rem 0 -3.8rem;
+    background: #ff6a13;
+  }
+  .story-card h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.05;
+  }
+  .story-card p {
+    margin-top: 5rem;
+    color: #727a7f;
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+  .story-card a {
+    position: absolute;
+    bottom: 1.7rem;
+    color: #24323b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .ritual {
+    position: relative;
+    min-height: 590px;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    color: white;
+  }
+  .ritual > img,
+  .ritual__shade {
+    position: absolute;
+    inset: -6% 0;
+    z-index: -2;
+    width: 100%;
+    height: 112%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .ritual__shade {
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgb(17 8 3 / 92%) 0%,
+      rgb(17 8 3 / 58%) 40%,
+      transparent 67%,
+      rgb(17 8 3 / 42%) 100%
+    );
+  }
+  .ritual__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+  .ritual__copy {
+    width: min(34rem, 48%);
+  }
+  .ritual h2 {
+    margin: 0;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+  .ritual__copy > p:not(.chapter) {
+    max-width: 30rem;
+    color: rgb(255 255 255 / 78%);
+    line-height: 1.7;
+  }
+  .chapter--light {
+    color: rgb(255 255 255 / 55%);
+  }
+  .ritual__watch {
+    margin-top: 1.7rem;
+    color: #ff6a13;
+  }
+  .play--light {
+    border-color: white;
+    color: white;
+  }
+  .ritual blockquote {
+    width: min(17rem, 25%);
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 1.7rem;
+    font-style: italic;
+    line-height: 1.45;
+  }
+  .ritual blockquote::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 0.18rem;
+    margin-top: 1.6rem;
+    background: #ff6a13;
+  }
+
+  .craft {
+    background: #fff;
+  }
+  .craft__grid {
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: center;
+  }
+  .craft__values {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 2.7rem 0 0;
+    padding: 0;
+  }
+  .craft__values li {
+    min-width: 5rem;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+  .craft__values span {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: #ff6a13;
+    font-size: 2rem;
+  }
+  .craft__media {
+    position: relative;
+    margin: 0;
+    min-height: 460px;
+  }
+  .craft__media img {
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  .craft__media a {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 9rem;
+    aspect-ratio: 1;
+    padding: 1.35rem;
+    border-radius: 0.45rem;
+    background: rgb(255 255 255 / 94%);
+    color: #26333b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 16px 35px rgb(0 0 0 / 16%);
+  }
+
+  .featured {
+    background: #fbf9f5;
+  }
+  .featured__grid {
+    display: grid;
+    grid-template-columns: 5rem 1.12fr 0.95fr;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  .featured__thumbs {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .featured__thumbs button {
+    aspect-ratio: 1;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 0.4rem;
+    background: #eee;
+  }
+  .featured__thumbs .is-selected {
+    border: 2px solid #ff6a13;
+  }
+  .featured__thumbs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .featured__media {
+    height: 540px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: #e9dfd3;
+  }
+  .featured__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% center;
+  }
+  .featured__copy {
+    padding-left: clamp(1rem, 4vw, 4rem);
+  }
+  .featured__copy h2 {
+    margin: 0;
+    font-size: clamp(2.7rem, 5vw, 4.2rem);
+    letter-spacing: -0.04em;
+  }
+  .featured__copy > p:not(.eyebrow) {
+    color: #69737a;
+    line-height: 1.7;
+  }
+  .price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+  }
+  .price strong {
+    font-size: 1.7rem;
+  }
+  .price span {
+    padding: 0.3rem 0.55rem;
+    border-radius: 0.25rem;
+    background: #ff6a13;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  .price del {
+    flex-basis: 100%;
+    color: #899198;
+  }
+  .purchase-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+  }
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #dfe1e0;
+    border-radius: 0.35rem;
+    background: white;
+  }
+  .quantity button {
+    border: 0;
+    background: none;
+    font-size: 1.1rem;
+  }
+  .add-button {
+    width: 100%;
+  }
+  .assurances {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 1.6rem 0 0;
+    border-top: 1px solid #e1dfda;
+  }
+  .assurances li {
+    display: flex;
+    gap: 0.5rem;
+    color: #687178;
+    font-size: 0.62rem;
+    line-height: 1.3;
+  }
+  .assurances span {
+    color: #ff6a13;
+    font-size: 1.4rem;
+  }
+
+  .collection {
+    padding-top: 4rem;
+    background: white;
+  }
+  .collection__head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  .collection h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+  .collection__head > a {
+    color: #344149;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .collection__head > a span {
+    color: #ff6a13;
+    font-size: 1.2rem;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.4rem;
+  }
+  .product-card img {
+    width: 100%;
+    aspect-ratio: 1.25;
+    object-fit: cover;
+    border-radius: 0.4rem;
+    transition: transform 0.45s ease;
+  }
+  .product-card a {
+    display: block;
+    overflow: hidden;
+    border-radius: 0.4rem;
+  }
+  .product-card a:hover img {
+    transform: scale(1.04);
+  }
+  .product-card h3 {
+    margin: 0.75rem 0 0.1rem;
+    font-size: 0.78rem;
+  }
+  .product-card p {
+    margin: 0;
+    font-size: 0.72rem;
+  }
+
+  .heritage {
+    padding-bottom: 0;
+    background: #fbfaf7;
+  }
+  .heritage__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.05fr 0.7fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .heritage__copy .button {
+    margin-top: 1.6rem;
+  }
+  .heritage__media {
+    width: 100%;
+    height: 410px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  .heritage__pillars {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 1.5rem;
+    background: rgb(255 255 255 / 65%);
+    border-radius: 0.5rem;
+  }
+  .heritage__pillars li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid #e8e4dd;
+    color: #677178;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  .heritage__pillars li:last-child {
+    border: 0;
+  }
+  .heritage__pillars span {
+    color: #ff6a13;
+    font-size: 1.8rem;
+  }
+  .newsletter {
+    margin-top: 6rem;
+    padding-block: 2.6rem;
+    border-top: 1px solid #e5e1db;
+    background: white;
+  }
+  .newsletter__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  .newsletter h3 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+  }
+  .newsletter p {
+    margin: 0.35rem 0 0;
+    color: #7a8389;
+    font-size: 0.76rem;
+  }
+  .newsletter form {
+    display: flex;
+    width: min(100%, 31rem);
+  }
+  .newsletter input {
+    flex: 1;
+    min-width: 0;
+    padding: 1rem 1.2rem;
+    border: 1px solid #e2dfda;
+    border-radius: 0.35rem 0 0 0.35rem;
+    font: inherit;
+    font-size: 0.78rem;
+  }
+  .newsletter button {
+    padding: 0 1.7rem;
+    border: 0;
+    border-radius: 0 0.35rem 0.35rem 0;
+    background: #ff6a13;
+    color: white;
+    font-weight: 700;
+  }
+
+  @media (max-width: 1499px) {
+    .hero__steps {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero__origin {
+      display: none;
+    }
+    .hero__copy {
+      width: min(34rem, 70%);
+    }
+    .discover__grid,
+    .craft__grid,
+    .heritage__grid {
+      grid-template-columns: 1fr;
+    }
+    .discover__gallery {
+      min-height: 560px;
+    }
+    .ritual__copy {
+      width: 60%;
+    }
+    .ritual blockquote {
+      width: 30%;
+      font-size: 1.35rem;
+    }
+    .featured__grid {
+      grid-template-columns: 4.5rem 1fr;
+    }
+    .featured__copy {
+      grid-column: 1 / -1;
+      padding: 2rem 0 0;
+    }
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .heritage__media {
+      grid-row: 2;
+    }
+    .heritage__pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .wrap {
+      width: min(100% - 1.25rem, 1180px);
+    }
+    .section {
+      padding-block: 4rem;
+    }
+    .hero {
+      min-height: 760px;
+      align-items: end;
+    }
+    .hero__media {
+      object-position: 68% center;
+    }
+    .hero__veil {
+      background: linear-gradient(
+        180deg,
+        rgb(249 247 242 / 38%) 0%,
+        rgb(249 247 242 / 94%) 58%,
+        #f9f7f2 100%
+      );
+    }
+    .hero__inner {
+      align-items: end;
+      padding: 4rem 0 6rem;
+    }
+    .hero__copy {
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: 4.2rem;
+    }
+    .hero__actions {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .scroll-cue {
+      display: none;
+    }
+    .discover__gallery {
+      min-height: 450px;
+    }
+    .gallery__detail {
+      width: 58%;
+      height: 58%;
+    }
+    .gallery__temple {
+      left: 61%;
+      width: 39%;
+    }
+    .gallery__flame {
+      left: 13%;
+      width: 62%;
+    }
+    .story-card {
+      display: none;
+    }
+    .stats {
+      gap: 0.6rem;
+    }
+    .stats dt {
+      font-size: 1.15rem;
+    }
+    .ritual {
+      min-height: 680px;
+    }
+    .ritual > img {
+      object-position: 63% center;
+    }
+    .ritual__shade {
+      background: linear-gradient(
+        180deg,
+        rgb(17 8 3 / 35%),
+        rgb(17 8 3 / 94%) 70%
+      );
+    }
+    .ritual__inner {
+      align-items: end;
+    }
+    .ritual__copy {
+      width: 100%;
+    }
+    .ritual blockquote {
+      display: none;
+    }
+    .craft__values {
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .craft__media,
+    .craft__media img {
+      min-height: 360px;
+    }
+    .featured__grid {
+      grid-template-columns: 1fr;
+    }
+    .featured__thumbs {
+      grid-template-columns: repeat(4, 1fr);
+      grid-row: 2;
+    }
+    .featured__media {
+      height: 440px;
+      grid-row: 1;
+    }
+    .featured__copy {
+      grid-column: auto;
+      grid-row: 3;
+    }
+    .purchase-row {
+      grid-template-columns: 1fr;
+    }
+    .quantity {
+      min-height: 3.5rem;
+    }
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .product-card:last-child {
+      display: none;
+    }
+    .heritage__pillars {
+      grid-template-columns: 1fr;
+    }
+    .newsletter__inner {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .newsletter form {
+      width: 100%;
+    }
+    .newsletter input {
+      width: 60%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+    .product-card img {
+      transition: none;
+    }
+  }
+</style>
