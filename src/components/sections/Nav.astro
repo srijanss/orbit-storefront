@@ -6,19 +6,23 @@ const links = [
 ];
 ---
 
-<nav class="flex items-center justify-between border-b border-border bg-surface px-4 py-4 md:px-6 lg:px-8">
-  <a href="/" class="font-display text-lg font-semibold text-text">
-    Storefront
-  </a>
-  <ul class="flex items-center gap-6">
-    {
-      links.map((link) => (
-        <li>
-          <a href={link.href} class="text-sm text-text-secondary transition-colors hover:text-action">
-            {link.label}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+<nav class="flex items-center border-b border-border bg-surface">
+  <div class="mx-auto flex w-full max-w-7xl items-center px-4 py-6 md:px-6 lg:px-8">
+    <div class="flex items-center gap-10">
+      <a href="/" class="font-display text-2xl font-bold text-text">
+        storefront
+      </a>
+      <ul class="flex items-center gap-8">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-text-secondary transition-colors hover:text-action">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </nav>

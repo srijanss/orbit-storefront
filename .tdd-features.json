@@ -79,5 +79,59 @@
     "targetFiles": [],
     "recordedAt": "2026-09-14T04:30:17.135279+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "refine-nav-styling-to-reference",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/nav-footer-styling.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T04:49:40.619193+00:00",
+    "cyclesCompleted": 2
+  },
+  {
+    "featureName": "match-real-style-guide-tokens",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-tokens-design-system.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T04:56:18.680494+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "fix-font-weight-usage",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/nav-footer-styling.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T04:58:28.924389+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "fix-landing-hero-font-weight",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-hero-styling.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T05:00:29.617126+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "fix-nav-link-grouping",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/nav-footer-styling.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T05:03:56.927406+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "sticky-footer-layout",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-layout.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T05:08:58.182730+00:00",
+    "cyclesCompleted": 1
   }
 ]

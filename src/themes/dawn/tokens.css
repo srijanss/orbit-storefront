@@ -1,45 +1,35 @@
 /*
- * Translated from ../ecommerce-design-system-handoff/design-system/tokens.css
- * into Tailwind v4 @theme keys, so Tailwind generates matching utilities
- * (e.g. --color-action -> bg-action/text-action, --text-5xl -> text-5xl).
- * Spacing/container gutters intentionally reuse Tailwind's default spacing
- * scale, which already matches the handoff's 4px-base scale exactly.
+ * Real values from style-guide.md in the source Frontend Mentor project
+ * (ecommerce-product-page), translated into Tailwind v4 @theme keys so
+ * Tailwind generates matching utilities (e.g. --color-action -> bg-action,
+ * --text-5xl -> text-5xl). Spacing/container gutters intentionally reuse
+ * Tailwind's default spacing scale (already a 4px base).
  */
 @theme {
-  /* Primitive color scales */
-  --color-orange-50: oklch(0.97 0.025 55);
-  --color-orange-100: oklch(0.935 0.05 54);
-  --color-orange-200: oklch(0.875 0.085 52);
-  --color-orange-300: oklch(0.795 0.12 51);
-  --color-orange-400: oklch(0.705 0.145 50);
-  --color-orange-500: oklch(0.602 0.156 49);
-  --color-orange-600: oklch(0.545 0.15 48);
-  --color-orange-700: oklch(0.47 0.135 47);
-  --color-orange-800: oklch(0.39 0.11 47);
-  --color-orange-900: oklch(0.315 0.083 48);
+  /* Primitive colors — exact style-guide values */
+  --color-orange-500: hsl(26, 100%, 55%); /* Orange */
+  --color-orange-100: hsl(25, 100%, 94%); /* Pale orange */
+  /* Hover/active shades aren't in the style guide (only one orange is
+     specified) — derived by darkening the base orange. */
+  --color-orange-600: hsl(26, 100%, 48%);
+  --color-orange-700: hsl(26, 100%, 42%);
 
-  --color-neutral-0: oklch(1 0 0);
-  --color-neutral-50: oklch(0.985 0.002 70);
-  --color-neutral-100: oklch(0.959 0.003 68);
-  --color-neutral-200: oklch(0.905 0.004 122);
-  --color-neutral-300: oklch(0.84 0.006 75);
-  --color-neutral-400: oklch(0.7 0.008 65);
-  --color-neutral-500: oklch(0.56 0.01 60);
-  --color-neutral-600: oklch(0.445 0.012 58);
-  --color-neutral-700: oklch(0.372 0 0);
-  --color-neutral-800: oklch(0.3 0.018 58);
-  --color-neutral-900: oklch(0.259 0.03 57);
-  --color-neutral-950: oklch(0.18 0.02 55);
+  --color-neutral-0: hsl(0, 0%, 100%); /* White */
+  --color-neutral-50: hsl(223, 64%, 98%); /* Light grayish blue */
+  --color-neutral-300: hsl(220, 14%, 75%); /* Grayish blue */
+  --color-neutral-600: hsl(219, 9%, 45%); /* Dark grayish blue */
+  --color-neutral-950: hsl(220, 13%, 13%); /* Very dark blue */
+  --color-overlay: hsl(0, 0%, 0%, 75%); /* Lightbox background */
 
   /* Semantic colors */
   --color-bg: var(--color-neutral-0);
   --color-surface: var(--color-neutral-0);
-  --color-surface-subtle: var(--color-neutral-100);
+  --color-surface-subtle: var(--color-neutral-50);
   --color-text: var(--color-neutral-950);
   --color-text-secondary: var(--color-neutral-600);
-  --color-text-muted: var(--color-neutral-500);
-  --color-border: var(--color-neutral-200);
-  --color-border-strong: var(--color-neutral-700);
+  --color-text-muted: var(--color-neutral-600);
+  --color-border: var(--color-neutral-300);
+  --color-border-strong: var(--color-neutral-600);
   --color-action: var(--color-orange-500);
   --color-action-hover: var(--color-orange-600);
   --color-action-active: var(--color-orange-700);
@@ -47,12 +37,12 @@
   --color-focus: var(--color-orange-500);
 
   /* Typography */
-  --font-sans: 'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Kumbh Sans', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: var(--font-sans);
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: 1rem;
+  --text-base: 1rem; /* Style guide: 16px paragraph */
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
@@ -65,9 +55,8 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.7;
 
+  /* Style guide specifies only these two weights for Kumbh Sans. */
   --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   /* Radius — intentionally restrained */
@@ -77,6 +66,6 @@
   --radius-lg: 10px;
 
   /* Shadows — sparing usage only */
-  --shadow-sm: 0 1px 2px oklch(0.18 0.02 55 / 0.08);
-  --shadow-md: 0 8px 24px oklch(0.18 0.02 55 / 0.12);
+  --shadow-sm: 0 1px 2px hsl(220, 13%, 13%, 8%);
+  --shadow-md: 0 8px 24px hsl(220, 13%, 13%, 12%);
 }

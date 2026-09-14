@@ -37,7 +37,8 @@ describe('Styled home page (header, hero, footer)', () => {
     const container = await AstroContainer.create();
     const html = await container.renderToString(HomePage);
 
-    expect(html).toMatch(/<footer[^>]+class="[^"]*grid[^"]*"[^>]*>/);
+    expect(html).toMatch(/<footer[^>]+class="[^"]*border-t[^"]*"[^>]*>/);
+    expect(html).toMatch(/class="[^"]*grid[^"]*"/);
     expect(html).toMatch(/©/);
   });
 });
