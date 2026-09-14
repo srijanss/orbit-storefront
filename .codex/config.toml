@@ -13,8 +13,35 @@
 # (.codex/), not the project root or runtime cwd.
 
 [mcp_servers.outside-in-tdd]
-command = "../.agents/mcp/launch-outside-in-tdd.sh"
+command = ".agents/mcp/launch-outside-in-tdd.sh"
 args = []
+
+[mcp_servers.outside-in-tdd.tools.run_tests]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.verify]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.drill_down]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.write_test]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.write_code]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.refactor_code]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.return_to_parent]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.complete_feature]
+approval_mode = "approve"
+
+[mcp_servers.outside-in-tdd.tools.init_feature]
+approval_mode = "approve"
 
 # Counterpart to the .claude/settings.json PreToolUse hook — blocks direct
 # pytest/vitest/etc. invocations so agents go through run_tests() instead.
@@ -23,4 +50,22 @@ matcher = "Bash"
 
   [[hooks.PreToolUse.hooks]]
   type = "command"
-  command = "../.agents/hooks/block-direct-test-runs.sh"
+  command = ".agents/hooks/block-direct-test-runs.sh"
+
+# Match Claude's command safety guard: block autonomous destructive commands,
+# commits, pushes, branch creation, and shell writes to protected files.
+[[hooks.PreToolUse]]
+matcher = "Bash"
+
+  [[hooks.PreToolUse.hooks]]
+  type = "command"
+  command = ".agents/hooks/danger-guard.sh"
+
+# Match Claude's direct-file-edit protection for secrets and infrastructure
+# manifests. The shared script reads the tool's file_path input.
+[[hooks.PreToolUse]]
+matcher = "Edit|Write"
+
+  [[hooks.PreToolUse.hooks]]
+  type = "command"
+  command = ".agents/hooks/protect-sensitive-files.sh"
