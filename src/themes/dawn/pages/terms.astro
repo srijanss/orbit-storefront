@@ -2,18 +2,225 @@
 import Layout from '../layout.astro';
 ---
 
-<Layout title="Terms & Conditions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-  <main class="mx-auto max-w-5xl px-4 py-16 text-center md:px-6 md:py-24 lg:px-8">
-    <h1 class="text-5xl leading-tight font-bold text-text">Terms &amp; Conditions</h1>
-    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-    <a
-      href="/contact"
-      class="mt-8 inline-block rounded-md bg-action px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-action-hover"
-    >
-      Get in Touch
-    </a>
+<Layout
+  title="Terms & Conditions"
+  description="Read the terms that apply when you browse our storefront, create an account, place an order, or use our services."
+>
+  <main class="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-24 lg:px-8">
+    <header class="text-center">
+      <p class="text-sm font-semibold tracking-widest text-text-secondary uppercase">
+        Last updated September 14, 2026
+      </p>
+      <h1 class="mt-4 text-5xl leading-tight font-bold text-text">
+        Terms &amp; Conditions
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
+        These terms describe the rules that apply when you visit our storefront,
+        create an account, purchase products, or otherwise use our services.
+        Please read them carefully before placing an order.
+      </p>
+    </header>
+
+    <div class="mt-16 space-y-12 text-left text-text-secondary">
+      <section>
+        <h2 class="text-2xl font-bold text-text">Agreement to These Terms</h2>
+        <p class="mt-4 leading-relaxed">
+          By accessing or using this storefront, you agree to these Terms and
+          Conditions and our Privacy Policy. If you do not agree, please do not
+          use the site or submit an order. These terms apply to visitors,
+          account holders, and customers and form an agreement between you and
+          the business operating this storefront.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Additional terms may be shown for a particular product, promotion, or
+          service. Those additional terms become part of this agreement when you
+          use the relevant offering. If they conflict with these general terms,
+          the more specific terms apply to that offering.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Accounts and Eligibility</h2>
+        <p class="mt-4 leading-relaxed">
+          You must be legally able to enter into a binding agreement in your
+          location to make a purchase. You are responsible for providing
+          accurate, current information and for keeping your account credentials
+          secure. Purchases must be completed through an authenticated customer
+          account; guest checkout is not available.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          You are responsible for activity under your account and should contact
+          us promptly if you suspect unauthorized access. We may suspend or
+          close an account where reasonably necessary to protect customers,
+          investigate misuse, comply with law, or enforce these terms. Account
+          closure does not remove obligations relating to orders already placed.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Products and Availability</h2>
+        <p class="mt-4 leading-relaxed">
+          We aim to describe and display products accurately, including their
+          materials, dimensions, colors, and features. Screen settings and
+          natural variation may affect how a product looks, and minor
+          differences do not necessarily mean an item is defective. Please
+          review the product page and care information before purchasing.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Products and quantities may change without notice. Adding an item to a
+          cart does not reserve it, and availability is confirmed only when we
+          accept the order. We may set purchase limits or withdraw a product
+          when needed for inventory, safety, legal, or other operational
+          reasons.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">
+          Orders, Pricing, and Payment
+        </h2>
+        <p class="mt-4 leading-relaxed">
+          Submitting an order is an offer to purchase the items shown at
+          checkout. An automated acknowledgement confirms that we received your
+          request; it does not mean the order has been accepted. We may decline
+          or cancel an order because of stock issues, suspected fraud, payment
+          problems, pricing errors, delivery restrictions, or limits on
+          quantities.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Prices are shown in the currency indicated on the storefront. Taxes,
+          delivery charges, duties, or similar costs are displayed where they
+          can be calculated and may be added at checkout. You authorize our
+          payment provider to charge the selected payment method for the final
+          amount. If a clear pricing or product error affects your order, we
+          will contact you before proceeding or issue a refund if payment has
+          already been collected.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Shipping and Delivery</h2>
+        <p class="mt-4 leading-relaxed">
+          Available delivery methods, estimated timeframes, and charges are
+          presented during checkout. Estimates begin after an order is accepted
+          and are not guarantees. Carrier delays, severe weather, customs
+          processing, remote destinations, and other events outside our
+          reasonable control may affect arrival times.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          You are responsible for providing a complete delivery address and for
+          reviewing it before submitting the order. Contact us as soon as
+          possible if an address needs correction. Once an order has entered
+          fulfillment, rerouting may not be possible and extra carrier charges
+          may apply where permitted.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Returns and Refunds</h2>
+        <p class="mt-4 leading-relaxed">
+          Return eligibility depends on the item, its condition, the reason for
+          return, and any rights provided by applicable consumer law. Before
+          sending an item back, contact us with your order details so we can
+          confirm the available options and provide instructions. Items returned
+          without authorization may take longer to process.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Approved refunds are generally issued to the original payment method
+          after the returned item is received and inspected. Processing time may
+          vary by financial institution. These terms do not exclude, restrict,
+          or modify consumer guarantees or remedies that cannot lawfully be
+          excluded in your jurisdiction.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Acceptable Use</h2>
+        <p class="mt-4 leading-relaxed">
+          You may use the storefront only for lawful personal or business
+          shopping purposes. You must not interfere with site operation, bypass
+          security controls, introduce malicious code, scrape the site at an
+          unreasonable rate, impersonate another person, use fraudulent payment
+          information, or attempt to access accounts or systems without
+          authorization.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Reviews, messages, and other content you submit must be accurate and
+          must not be unlawful, abusive, deceptive, infringing, or harmful. You
+          retain ownership of your content but grant us permission to host,
+          reproduce, and display it as needed to operate and promote the
+          service, subject to our Privacy Policy.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Intellectual Property</h2>
+        <p class="mt-4 leading-relaxed">
+          The storefront and its text, graphics, photographs, logos, product
+          presentation, and software are owned by us or used with permission and
+          are protected by intellectual property laws. We grant you a limited,
+          revocable, non-transferable right to access the storefront for its
+          intended purpose. No ownership rights transfer to you.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          You may not copy, modify, distribute, sell, license, reverse engineer,
+          or create derivative works from protected storefront content except
+          where the law expressly permits it or you have written permission from
+          the relevant rights holder.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">
+          Disclaimers and Limitation of Liability
+        </h2>
+        <p class="mt-4 leading-relaxed">
+          We work to keep the storefront accurate, secure, and available, but
+          online services may occasionally contain errors or experience
+          interruptions. To the extent permitted by law, the site is provided on
+          an “as available” basis, and we do not promise uninterrupted or
+          error-free access.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          Nothing in these terms excludes liability or customer rights that
+          cannot legally be excluded. Where liability can be limited, we are not
+          responsible for indirect, consequential, or special losses that were
+          not reasonably foreseeable when the agreement was made. Our
+          responsibility for a product remains subject to applicable consumer
+          law.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-text">Changes to These Terms</h2>
+        <p class="mt-4 leading-relaxed">
+          We may revise these terms to reflect changes to our products,
+          services, operations, or legal obligations. The latest version will
+          appear on this page with its effective date. Changes apply from that
+          date and do not retroactively alter an order already accepted unless
+          required by law or agreed with you.
+        </p>
+        <p class="mt-4 leading-relaxed">
+          If part of these terms is found unenforceable, the remaining
+          provisions continue to apply. A delay in enforcing a right does not
+          waive it. Questions, concerns, and formal notices about these terms
+          can be sent through our contact page.
+        </p>
+      </section>
+    </div>
+
+    <div class="mt-16 rounded-2xl bg-surface p-8 text-center md:p-10">
+      <h2 class="text-2xl font-bold text-text">Questions about these terms?</h2>
+      <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-text-secondary">
+        Contact us before placing an order if you need help understanding any
+        part of these terms.
+      </p>
+      <a
+        href="/contact"
+        class="mt-8 inline-block rounded-md bg-action px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-action-hover"
+      >
+        Get in Touch
+      </a>
+    </div>
   </main>
 </Layout>

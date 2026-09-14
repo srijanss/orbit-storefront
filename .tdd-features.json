@@ -169,5 +169,23 @@
     "targetFiles": [],
     "recordedAt": "2026-09-14T06:04:47.786646+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Dawn privacy policy long-form content",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-privacy-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T07:39:33.700833+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Dawn terms and conditions long-form content",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-terms-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T07:44:53.205482+00:00",
+    "cyclesCompleted": 1
   }
 ]
