@@ -70,5 +70,14 @@
     "targetFiles": [],
     "recordedAt": "2026-09-12T10:58:48.694955+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "style-landing-header-footer",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/acceptance/style-landing-header-footer.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T04:30:17.135279+00:00",
+    "cyclesCompleted": 1
   }
 ]

@@ -3,11 +3,17 @@ import Layout from '../layout.astro';
 ---
 
 <Layout title="Home" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
-  <main>
-    <h1>Lorem ipsum dolor sit amet</h1>
-    <p>
+  <main class="mx-auto max-w-5xl px-4 py-16 text-center md:px-6 md:py-24 lg:px-8">
+    <h1 class="text-5xl leading-tight font-semibold text-text">Lorem ipsum dolor sit amet</h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </p>
+    <a
+      href="/contact"
+      class="mt-8 inline-block rounded-md bg-action px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-action-hover"
+    >
+      Get in Touch
+    </a>
   </main>
 </Layout>

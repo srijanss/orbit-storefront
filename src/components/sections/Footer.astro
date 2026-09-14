@@ -1,18 +1,42 @@
 ---
-const links = [
-  { href: '/privacy', label: 'Privacy Policy' },
-  { href: '/terms', label: 'Terms & Conditions' },
+const linkGroups = [
+  {
+    heading: 'Help',
+    links: [
+      { href: '/privacy', label: 'Privacy Policy' },
+      { href: '/terms', label: 'Terms & Conditions' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { href: '/about', label: 'About' },
+      { href: '/contact', label: 'Contact' },
+    ],
+  },
 ];
+
+const year = new Date().getFullYear();
 ---
 
-<footer>
-  <ul>
-    {
-      links.map((link) => (
-        <li>
-          <a href={link.href}>{link.label}</a>
-        </li>
-      ))
-    }
-  </ul>
+<footer class="grid gap-8 border-t border-border bg-surface-subtle px-4 py-12 md:grid-cols-2 md:px-6 lg:grid-cols-3 lg:px-8">
+  {
+    linkGroups.map((group) => (
+      <div>
+        <p class="text-sm font-semibold text-text">{group.heading}</p>
+        <ul class="mt-4 space-y-2">
+          {group.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-text-secondary transition-colors hover:text-action">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+  <p class="text-xs text-text-muted md:col-span-2 lg:col-span-3">
+    © {year} Storefront. All rights reserved.
+  </p>
 </footer>
