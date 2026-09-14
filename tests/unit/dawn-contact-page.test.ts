@@ -19,4 +19,15 @@ describe('dawn theme Contact page', () => {
 
     expect(html).toMatch(/<a[^>]+href="mailto:[^"]+"/);
   });
+
+  it('renders landing-page-aligned centered contact content and styled email link', async () => {
+    const container = await AstroContainer.create();
+    const html = await container.renderToString(Contact);
+
+    expect(html).toContain('max-w-5xl');
+    expect(html).toContain('text-center');
+    expect(html).toContain('text-5xl');
+    expect(html).toContain('text-text-secondary');
+    expect(html).toContain('text-action');
+  });
 });

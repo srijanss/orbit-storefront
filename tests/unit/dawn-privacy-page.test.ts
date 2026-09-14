@@ -19,4 +19,16 @@ describe('dawn theme Privacy Policy page', () => {
 
     expect(html).toContain('Lorem ipsum');
   });
+
+  it('renders landing-page-aligned centered privacy content and contact CTA', async () => {
+    const container = await AstroContainer.create();
+    const html = await container.renderToString(Privacy);
+
+    expect(html).toContain('max-w-5xl');
+    expect(html).toContain('text-center');
+    expect(html).toContain('text-5xl');
+    expect(html).toContain('text-text-secondary');
+    expect(html).toContain('href="/contact"');
+    expect(html).toContain('bg-action');
+  });
 });
