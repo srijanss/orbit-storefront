@@ -19,6 +19,7 @@ export interface ScrollMotionSelectors {
   pageProgress: string;
   parallaxMedia: string;
   leadMedia: string;
+  timelineRoot: string;
   timelineStep: string;
   timelineProgress: string;
 }
@@ -28,6 +29,7 @@ export const defaultScrollMotionSelectors: ScrollMotionSelectors = {
   pageProgress: '[data-scroll-progress]',
   parallaxMedia: '[data-parallax-media]',
   leadMedia: '[data-hero-media]',
+  timelineRoot: '[data-scroll-timeline]',
   timelineStep: '[data-timeline-step]',
   timelineProgress: '[data-timeline-progress]',
 };
@@ -54,6 +56,7 @@ export function initScrollMotion(
     root.querySelectorAll<HTMLElement>(selectors.parallaxMedia),
   );
   const leadMedia = root.querySelector<HTMLElement>(selectors.leadMedia);
+  const timelineRoot = root.querySelector<HTMLElement>(selectors.timelineRoot);
   const timelineSteps = Array.from(
     root.querySelectorAll<HTMLElement>(selectors.timelineStep),
   );
@@ -76,10 +79,17 @@ export function initScrollMotion(
   };
 
   const context = gsap.context(() => {
-    const activateTimelineStep = (activeStep: HTMLElement): void => {
+    const activateTimelineStep = (
+      activeStep: HTMLElement,
+      activeChapter: HTMLElement,
+    ): void => {
       timelineSteps.forEach((step) => {
         step.classList.toggle(activeClass, step === activeStep);
       });
+      timelineRoot?.classList.toggle(
+        'is-on-dark',
+        activeChapter.dataset.timelineTone === 'dark',
+      );
     };
 
     timelineSteps.forEach((step) => {
@@ -93,8 +103,8 @@ export function initScrollMotion(
         trigger: chapter,
         start: 'top center',
         end: 'bottom center',
-        onEnter: () => activateTimelineStep(step),
-        onEnterBack: () => activateTimelineStep(step),
+        onEnter: () => activateTimelineStep(step, chapter),
+        onEnterBack: () => activateTimelineStep(step, chapter),
       });
     });
 

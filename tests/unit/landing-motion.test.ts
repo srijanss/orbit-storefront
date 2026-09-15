@@ -104,7 +104,8 @@ describe('landing motion', () => {
 
   it('activates the matching timeline step as each chapter enters the viewport', () => {
     const discover = { id: 'discover' };
-    const ritual = { id: 'ritual' };
+    const ritual = { id: 'ritual', dataset: { timelineTone: 'dark' } };
+    const timeline = { classList: { toggle: vi.fn() } };
     const steps = [
       {
         dataset: { timelineTarget: 'discover' },
@@ -121,6 +122,7 @@ describe('landing motion', () => {
         return [];
       }),
       querySelector: vi.fn((selector: string) => {
+        if (selector === '[data-scroll-timeline]') return timeline;
         if (selector === '#discover') return discover;
         if (selector === '#ritual') return ritual;
         return null;
@@ -141,6 +143,10 @@ describe('landing motion', () => {
     );
     expect(steps[1].classList.toggle).toHaveBeenLastCalledWith(
       'is-active',
+      true,
+    );
+    expect(timeline.classList.toggle).toHaveBeenLastCalledWith(
+      'is-on-dark',
       true,
     );
   });

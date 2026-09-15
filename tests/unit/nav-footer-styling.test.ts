@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { readFileSync } from 'node:fs';
 import Nav from '../../src/components/sections/Nav.astro';
 import Footer from '../../src/components/sections/Footer.astro';
 
@@ -28,12 +29,17 @@ describe('Nav section styling', () => {
   // Reference layout: wordmark and links sit together on the left, with
   // empty space reserved on the right for cart/account icons (added once
   // checkout/auth exist) — not spread edge-to-edge via justify-between.
-  it('groups the wordmark and links together on the left rather than spreading them apart', async () => {
+  it('stacks on mobile and groups the wordmark and links on the left at larger widths', async () => {
     const container = await AstroContainer.create();
     const html = await container.renderToString(Nav);
 
     expect(html).not.toMatch(/class="[^"]*justify-between[^"]*"/);
-    expect(html).toMatch(/class="[^"]*flex[^"]*items-center[^"]*gap-10[^"]*"/);
+    expect(html).toMatch(
+      /class="[^"]*flex-col[^"]*items-start[^"]*sm:flex-row[^"]*sm:items-center[^"]*sm:gap-10[^"]*"/,
+    );
+    expect(html).toMatch(
+      /<ul[^>]+class="[^"]*w-full[^"]*gap-4[^"]*sm:w-auto[^"]*sm:gap-8[^"]*"/,
+    );
   });
 });
 
@@ -45,6 +51,19 @@ describe('Footer section styling', () => {
     expect(html).toMatch(/<footer[^>]+class="[^"]*border-t[^"]*"[^>]*>/);
     expect(html).toMatch(/class="[^"]*grid[^"]*"/);
     expect(html).toMatch(/©\s*\d{4}/);
+  });
+
+  it('uses the same warm surface and subdued borders as the page content', async () => {
+    const container = await AstroContainer.create();
+    const navHtml = await container.renderToString(Nav);
+    const footerHtml = await container.renderToString(Footer);
+    const tokens = readFileSync('src/themes/dawn/tokens.css', 'utf8');
+
+    expect(navHtml).toMatch(/<nav[^>]+border-border\/40/);
+    expect(footerHtml).toMatch(
+      /<footer[^>]+border-border\/40[^>]+bg-surface-subtle/,
+    );
+    expect(tokens).toMatch(/--color-surface-subtle:\s*#fbfaf7;/);
   });
 
   // Design consistency: mirror Nav's container width and wordmark treatment

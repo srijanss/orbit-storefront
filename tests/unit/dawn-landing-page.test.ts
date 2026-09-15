@@ -91,14 +91,76 @@ describe('dawn theme Landing page', () => {
     );
   });
 
-  it('keeps the persistent timeline out of the page content', () => {
+  it('keeps the persistent timeline visible on desktop only', () => {
     const source = readFileSync('src/themes/dawn/pages/landing.astro', 'utf8');
 
     expect(source).toMatch(
-      /\.hero__steps\s*\{[^}]*left:\s*calc\(50% \+ 590px \+ 1rem\)/s,
+      /\.hero__steps\s*\{[^}]*right:\s*clamp\([^}]*left:\s*auto/s,
+    );
+    expect(source).not.toMatch(
+      /@media \(max-width: 1499px\)\s*\{\s*\.hero__steps\s*\{\s*display:\s*none/s,
     );
     expect(source).toMatch(
-      /@media \(max-width: 1499px\)\s*\{\s*\.hero__steps\s*\{\s*display:\s*none/s,
+      /@media \(max-width: 900px\)\s*\{\s*\.hero__steps\s*\{\s*display:\s*none/s,
+    );
+  });
+
+  it('presents the timeline as unframed editorial navigation', () => {
+    const source = readFileSync('src/themes/dawn/pages/landing.astro', 'utf8');
+    const timelineRule = source.match(/\.hero__steps\s*\{([^}]*)\}/)?.[1];
+
+    expect(timelineRule).toBeDefined();
+    expect(timelineRule).not.toMatch(
+      /(?:backdrop-filter|background|box-shadow|border-radius)\s*:/,
+    );
+    expect(timelineRule).toMatch(/top:\s*50%/);
+    expect(timelineRule).toMatch(/max-width:\s*calc\(100vw - 1\.5rem\)/);
+    expect(source).toMatch(
+      /\.hero__steps li\.is-active\s*\{[^}]*opacity:\s*1/s,
+    );
+    expect(source).toMatch(
+      /\.hero__steps li\.is-active a\s*\{[^}]*transform:\s*translateX\(-0\.35rem\)/s,
+    );
+    expect(source).toMatch(
+      /\.hero__steps li::before\s*\{[^}]*border-radius:\s*50%[^}]*background:/s,
+    );
+  });
+
+  it('gives the timeline a contrasting palette over dark chapters', async () => {
+    const container = await AstroContainer.create();
+    const html = await container.renderToString(Landing);
+    const source = readFileSync('src/themes/dawn/pages/landing.astro', 'utf8');
+
+    expect(html).toMatch(
+      /<section[^>]+id="ritual"[^>]+data-timeline-tone="dark"/,
+    );
+    expect(source).toMatch(
+      /\.hero__steps\.is-on-dark\s+li\s*\{[^}]*color:\s*rgb\(255 255 255/s,
+    );
+    expect(source).toMatch(
+      /\.hero__steps\.is-on-dark\s+\.hero__steps-rail\s*\{[^}]*background:\s*rgb\(255 255 255/s,
+    );
+  });
+
+  it('reflows dense landing content for narrow mobile screens', () => {
+    const source = readFileSync('src/themes/dawn/pages/landing.astro', 'utf8');
+    const mobileRules = source.match(
+      /@media \(max-width: 640px\)\s*\{([\s\S]*?)\n {2}\}/,
+    )?.[1];
+
+    expect(mobileRules).toBeDefined();
+    expect(mobileRules).toMatch(/\.hero h1\s*\{[^}]*font-size:\s*clamp\(/s);
+    expect(mobileRules).toMatch(
+      /\.craft__values\s*\{[^}]*display:\s*grid[^}]*grid-template-columns:/s,
+    );
+    expect(mobileRules).toMatch(
+      /\.assurances\s*\{[^}]*display:\s*grid[^}]*grid-template-columns:/s,
+    );
+    expect(mobileRules).toMatch(
+      /\.collection__head\s*\{[^}]*align-items:\s*flex-start[^}]*flex-direction:\s*column/s,
+    );
+    expect(mobileRules).toMatch(
+      /\.newsletter form\s*\{[^}]*flex-direction:\s*column/s,
     );
   });
 

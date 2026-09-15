@@ -223,5 +223,77 @@
     "targetFiles": [],
     "recordedAt": "2026-09-14T09:56:29.752225+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Colocate Dawn theme images",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-14T10:03:42.912160+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Replace timeline glassmorphism with editorial navigation",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:02:23.497591+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Keep editorial timeline visible with aligned circle nodes",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:09:58.487086+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Adapt timeline contrast to dark chapters",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:15:27.666098+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Limit persistent timeline to desktop viewports",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:23:16.588310+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Repair mobile storefront responsiveness",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:34:53.295914+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Contain timeline within viewport",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/dawn-landing-page.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:38:43.901111+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Soften shared navigation and footer surfaces",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/nav-footer-styling.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T04:47:29.959034+00:00",
+    "cyclesCompleted": 1
   }
 ]

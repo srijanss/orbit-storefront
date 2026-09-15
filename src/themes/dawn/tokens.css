@@ -24,7 +24,7 @@
   /* Semantic colors */
   --color-bg: var(--color-neutral-0);
   --color-surface: var(--color-neutral-0);
-  --color-surface-subtle: var(--color-neutral-50);
+  --color-surface-subtle: #fbfaf7;
   --color-text: var(--color-neutral-950);
   --color-text-secondary: var(--color-neutral-600);
   --color-text-muted: var(--color-neutral-600);
@@ -37,7 +37,9 @@
   --color-focus: var(--color-orange-500);
 
   /* Typography */
-  --font-sans: 'Kumbh Sans', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans:
+    'Kumbh Sans', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
   --font-display: var(--font-sans);
 
   --text-xs: 0.75rem;
