@@ -24,7 +24,10 @@ vi.mock('gsap/ScrollTrigger', () => ({
   ScrollTrigger: { create: motion.create },
 }));
 
-import { initHeritageMotion } from '../../src/lib/landing-motion';
+import {
+  initHeritageMotion,
+  initScrollMotion,
+} from '../../src/lib/landing-motion';
 
 describe('landing timeline motion', () => {
   beforeEach(() => vi.clearAllMocks());
@@ -108,5 +111,71 @@ describe('landing timeline motion', () => {
         }),
       }),
     );
+  });
+
+  it('uses one scroll snap controller to move content between real chapter positions', () => {
+    const chapters = [
+      { id: 'discover', getBoundingClientRect: () => ({ top: 0 }) },
+      { id: 'ritual', getBoundingClientRect: () => ({ top: 400 }) },
+      { id: 'craftsmanship', getBoundingClientRect: () => ({ top: 1000 }) },
+    ];
+    const fill = { id: 'timeline-fill' };
+    const steps = chapters.map((chapter) => ({
+      dataset: { timelineTarget: chapter.id },
+      classList: { toggle: vi.fn() },
+    }));
+    const root = {
+      querySelectorAll: vi.fn((selector: string) =>
+        selector === '[data-timeline-step]' ? steps : [],
+      ),
+      querySelector: vi.fn((selector: string) => {
+        if (selector === '[data-timeline-progress]') return fill;
+        return (
+          chapters.find((chapter) => `#${chapter.id}` === selector) ?? null
+        );
+      }),
+    } as unknown as ParentNode;
+
+    initScrollMotion(root, { reducedMotion: false, timelineSnap: true });
+
+    const progressTween = motion.to.mock.calls.find(
+      ([target]) => target === fill,
+    )?.[1] as {
+      scrollTrigger: {
+        trigger: unknown;
+        endTrigger: unknown;
+        start: string;
+        end: string;
+        scrub: boolean;
+        snap: {
+          snapTo: (progress: number, trigger: { direction: number }) => number;
+          delay: number;
+          duration: { min: number; max: number };
+          inertia: boolean;
+        };
+      };
+    };
+    const snap = progressTween.scrollTrigger.snap;
+
+    expect(progressTween.scrollTrigger).toMatchObject({
+      trigger: chapters[0],
+      endTrigger: chapters[2],
+      start: 'top top',
+      end: 'top top',
+      scrub: true,
+      snap: {
+        delay: 0.24,
+        duration: { min: 0.45, max: 0.8 },
+        ease: 'power3.out',
+        inertia: false,
+      },
+    });
+    expect(snap.snapTo(0.29, { direction: 1 })).toBe(0.29);
+    expect(snap.snapTo(0.3, { direction: 1 })).toBe(0.4);
+    expect(snap.snapTo(0.85, { direction: 1 })).toBe(1);
+    expect(snap.snapTo(0.95, { direction: -1 })).toBe(0.95);
+    for (const [trigger] of motion.create.mock.calls) {
+      expect(trigger).not.toHaveProperty('snap');
+    }
   });
 });

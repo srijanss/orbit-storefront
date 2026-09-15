@@ -295,5 +295,50 @@
     "targetFiles": [],
     "recordedAt": "2026-09-15T04:47:29.959034+00:00",
     "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Soft-snap timeline to the next chapter near 90%",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/landing-timeline.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T05:09:24.236894+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Snap timeline content to chapter start",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/landing-timeline.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T05:18:58.820434+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Coordinate content snapping with one timeline controller",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/landing-timeline.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T05:25:02.656718+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Lower timeline snap threshold to 75%",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/landing-timeline.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T05:28:41.732800+00:00",
+    "cyclesCompleted": 1
+  },
+  {
+    "featureName": "Smooth timeline snap settling",
+    "dependsOn": [],
+    "status": "completed",
+    "testFile": "tests/unit/landing-timeline.test.ts",
+    "targetFiles": [],
+    "recordedAt": "2026-09-15T05:34:37.108776+00:00",
+    "cyclesCompleted": 1
   }
 ]

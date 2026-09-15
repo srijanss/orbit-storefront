@@ -9,6 +9,7 @@ const prefersReducedMotion = (): boolean =>
 
 export interface ScrollMotionOptions {
   reducedMotion?: boolean;
+  timelineSnap?: boolean;
   selectors?: Partial<ScrollMotionSelectors>;
   timelineTargetAttribute?: string;
   activeClass?: string;
@@ -40,6 +41,11 @@ export function initScrollMotion(
 ): () => void {
   const reducedMotion = options.reducedMotion ?? prefersReducedMotion();
   if (reducedMotion) return () => undefined;
+
+  const timelineSnap =
+    options.timelineSnap ??
+    (typeof window !== 'undefined' &&
+      window.matchMedia('(min-width: 901px)').matches);
 
   const selectors = {
     ...defaultScrollMotionSelectors,
@@ -77,6 +83,14 @@ export function initScrollMotion(
       ? (step.dataset.timelineTarget ?? null)
       : null;
   };
+  const timelineChapters = timelineSteps.flatMap((step) => {
+    const targetId = getTimelineTarget(step);
+    const chapter = targetId
+      ? root.querySelector<HTMLElement>(`#${targetId}`)
+      : null;
+
+    return chapter ? [chapter] : [];
+  });
 
   const context = gsap.context(() => {
     const activateTimelineStep = (
@@ -108,30 +122,59 @@ export function initScrollMotion(
       });
     });
 
-    const firstTargetId = timelineSteps[0]
-      ? getTimelineTarget(timelineSteps[0])
-      : null;
-    const lastStep = timelineSteps.at(-1);
-    const lastTargetId = lastStep ? getTimelineTarget(lastStep) : null;
-    const firstChapter = firstTargetId
-      ? root.querySelector<HTMLElement>(`#${firstTargetId}`)
-      : null;
-    const lastChapter = lastTargetId
-      ? root.querySelector<HTMLElement>(`#${lastTargetId}`)
-      : null;
+    const firstChapter = timelineChapters[0] ?? null;
+    const lastChapter = timelineChapters.at(-1) ?? null;
 
     if (timelineProgress && firstChapter && lastChapter) {
+      const progressTrigger: ScrollTrigger.Vars = {
+        trigger: firstChapter,
+        endTrigger: lastChapter,
+        start: 'top top',
+        end: 'top top',
+        scrub: true,
+      };
+
+      if (timelineSnap && timelineChapters.length > 1) {
+        progressTrigger.snap = {
+          snapTo: (progress: number, scrollTrigger?: ScrollTrigger): number => {
+            if (scrollTrigger?.direction !== 1) return progress;
+
+            const chapterTops = timelineChapters.map(
+              (chapter) => chapter.getBoundingClientRect().top,
+            );
+            const firstTop = chapterTops[0] ?? 0;
+            const lastTop = chapterTops.at(-1) ?? firstTop;
+            const totalDistance = lastTop - firstTop;
+            if (totalDistance <= 0) return progress;
+
+            const snapPoints = chapterTops.map(
+              (top) => (top - firstTop) / totalDistance,
+            );
+            const nextIndex = snapPoints.findIndex((point) => point > progress);
+            if (nextIndex <= 0) return progress;
+
+            const previousPoint = snapPoints[nextIndex - 1] ?? progress;
+            const nextPoint = snapPoints[nextIndex] ?? progress;
+            const threshold =
+              previousPoint + (nextPoint - previousPoint) * 0.75;
+
+            return progress + Number.EPSILON >= threshold
+              ? nextPoint
+              : progress;
+          },
+          delay: 0.24,
+          duration: { min: 0.45, max: 0.8 },
+          ease: 'power3.out',
+          inertia: false,
+          directional: true,
+        };
+      }
+
       gsap.to(timelineProgress, {
         scaleY: 1,
         transformOrigin: 'top',
         ease: 'none',
-        scrollTrigger: {
-          trigger: firstChapter,
-          endTrigger: lastChapter,
-          start: 'top center',
-          end: 'bottom center',
-          scrub: true,
-        },
+        scrollTrigger: progressTrigger,
       });
     }
 
