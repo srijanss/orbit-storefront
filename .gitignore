@@ -31,3 +31,11 @@ pnpm-debug.log*
 
 # project
 SPEC.md
+
+# agent tooling (local only)
+.agents/
+.claude/
+.codex/
+.mcp.json
+.tdd-*.json
+.project-mcp/
