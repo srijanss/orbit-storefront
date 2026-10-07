@@ -36,6 +36,7 @@ SPEC.md
 .agents/
 .claude/
 .codex/
+.pi/
 .mcp.json
 .tdd-*.json
 .project-mcp/
