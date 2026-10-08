@@ -1,11 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import type { APIRoute } from 'astro';
-import { existsSync } from 'node:fs';
+import { renderEndpoint } from '../endpoint';
 
 describe('typed endpoint harness', () => {
   it('uses a real Astro context and supports sync, async and failing handlers', async () => {
-    expect(existsSync(new URL('../endpoint.ts', import.meta.url))).toBe(true);
-    const { renderEndpoint } = await import('../endpoint');
     const request = new Request('https://store.example/sitemap.xml');
     const GET: APIRoute = (context) => {
       expect(context.request).toBe(request);
