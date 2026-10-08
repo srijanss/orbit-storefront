@@ -74,6 +74,9 @@ export function initScrollMotion(
       ? root
       : undefined;
 
+  const scrollTriggerRoot =
+    scope ?? root.querySelector<HTMLElement>('html') ?? undefined;
+
   const getTimelineTarget = (step: HTMLElement): string | null => {
     if (typeof step.getAttribute === 'function') {
       return step.getAttribute(timelineTargetAttribute);
@@ -197,7 +200,7 @@ export function initScrollMotion(
         transformOrigin: 'bottom',
         ease: 'none',
         scrollTrigger: {
-          trigger: root,
+          trigger: scrollTriggerRoot,
           start: 'top top',
           end: 'bottom bottom',
           scrub: true,
@@ -224,7 +227,7 @@ export function initScrollMotion(
         scale: 1.04,
         ease: 'none',
         scrollTrigger: {
-          trigger: root,
+          trigger: scrollTriggerRoot,
           start: 'top top',
           end: '+=700',
           scrub: 1,

@@ -102,6 +102,55 @@ describe('landing motion', () => {
     );
   });
 
+  it('uses supported triggers for element, document and fragment roots', () => {
+    const progress = { id: 'progress' };
+    const hero = { id: 'hero' };
+    const html = { id: 'html' };
+    for (const pageRoot of [html, null]) {
+      motion.to.mockClear();
+      const root = {
+        querySelectorAll: vi.fn(() => []),
+        querySelector: vi.fn((selector: string) => {
+          if (selector === '[data-scroll-progress]') return progress;
+          if (selector === '[data-hero-media]') return hero;
+          if (selector === 'html') return pageRoot;
+          return null;
+        }),
+      } as unknown as ParentNode;
+      initScrollMotion(root, { reducedMotion: false });
+      for (const target of [progress, hero]) {
+        expect(motion.to).toHaveBeenCalledWith(
+          target,
+          expect.objectContaining({
+            scrollTrigger: expect.objectContaining({
+              trigger: pageRoot ?? undefined,
+            }),
+          }),
+        );
+      }
+    }
+
+    class MockElement {
+      querySelectorAll = vi.fn(() => []);
+      querySelector = vi.fn((selector: string) =>
+        selector === '[data-scroll-progress]' ? progress : null,
+      );
+    }
+    vi.stubGlobal('Element', MockElement);
+    try {
+      const root = new MockElement();
+      initScrollMotion(root as unknown as ParentNode, { reducedMotion: false });
+      expect(motion.to).toHaveBeenCalledWith(
+        progress,
+        expect.objectContaining({
+          scrollTrigger: expect.objectContaining({ trigger: root }),
+        }),
+      );
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+
   it('activates the matching timeline step as each chapter enters the viewport', () => {
     const discover = { id: 'discover' };
     const ritual = { id: 'ritual', dataset: { timelineTone: 'dark' } };
