@@ -65,6 +65,12 @@ pnpm test · pnpm lint · pnpm format
 - No `any` — narrow `unknown` or type properly.
 - Conventional Commits, one logical change per commit, reference `SPEC.md` feature ID (e.g. `F2.6`) where useful.
 
+## Feature workflow
+
+- Use `project-mcp` to gather relevant project context for every feature.
+- Start every feature with the `.agents/skills/tdd-start/SKILL.md` workflow and follow its outside-in TDD checkpoints.
+- The user authorizes inferring feature names and concrete test targets from the task and repository conventions; state them and continue without a naming-confirmation checkpoint.
+
 ## Testing
 
 Unit tests: cart/checkout logic, non-trivial data transforms.
